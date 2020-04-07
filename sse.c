@@ -58,55 +58,55 @@ int main(){
 			//vazoume kathe praksi enos pixel se mia metavliti mul pou einai ___mm128 oste na mporoume na kanoume tis prostheseis
 			z[0] = a[(i-1)+(j-1)] * k0;
 			mul00 = &z[0];
-			mul0 = _mm_load_ps(mul00);
+			mul0 = _mm_load_pd(mul00);
 
 			z[1] = a[(i-1)+j] * k1;
 			mul11 = &z[1];
-			mul1 = _mm_load_ps(mul11);
+			mul1 = _mm_load_pd(mul11);
 
 			z[2] = a[(i-1)+(j+1)] * k2;
 			mul22 = &z[2];
-			mul2 = _mm_load_ps(mul22);
+			mul2 = _mm_load_pd(mul22);
 
 			z[3] = a[i+(j-1)] * k3;
 			mul33 = &z[3];
-			mul3 = _mm_load_ps(mul33);
+			mul3 = _mm_load_pd(mul33);
 
 			z[4] = a[i+j] * k4;
 			mul44 = &z[4];
-			mul4 = _mm_load_ps(mul44);
+			mul4 = _mm_load_pd(mul44);
 
 			z[5] = a[i+(j+1)] * k5;
 			mul55 = &z[5];
-			mul5 = _mm_load_ps(mul55);
+			mul5 = _mm_load_pd(mul55);
 
 			z[6] = a[(i+1)+(j-1)] * k6;
 			mul66 = &z[6];
-			mul6 = _mm_load_ps(mul66);
+			mul6 = _mm_load_pd(mul66);
 
 			z[7] = a[(i+1)+j] * k7;
 			mul77 = &z[7];
-			mul7 = _mm_load_ps(mul77);
+			mul7 = _mm_load_pd(mul77);
 
 			z[8] = a[(i+1)+(j+1)] * k8;
 			mul88 = &z[8];
-			mul8 = _mm_load_ps(mul88);
+			mul8 = _mm_load_pd(mul88);
 
 			//kanoume tis prostheseis
-			sum1 = _mm_add_ps(mul0, mul1);
-			sum2 = _mm_add_ps(mul2, mul3);
-			sum3 = _mm_add_ps(mul4, mul5);
-			sum4 = _mm_add_ps(mul6, mul7);
+			sum1 = _mm_add_pd(mul0, mul1);
+			sum2 = _mm_add_pd(mul2, mul3);
+			sum3 = _mm_add_pd(mul4, mul5);
+			sum4 = _mm_add_pd(mul6, mul7);
 			
 			//kanoume ki alles prosteseis
-			sum5 = _mm_add_ps(sum1, sum2);
-			sum6 = _mm_add_ps(sum3, sum4);
+			sum5 = _mm_add_pd(sum1, sum2);
+			sum6 = _mm_add_pd(sum3, sum4);
 
 			//alli mia prosthesi
-			sum7 = _mm_add_ps(sum5, sum6);
+			sum7 = _mm_add_pd(sum5, sum6);
 
 			//teleutaia
-			sumfinal = _mm_add_ps(sum7, mul8);
+			sumfinal = _mm_add_pd(sum7, mul8);
 
 			*vb = sumfinal;
 		}
